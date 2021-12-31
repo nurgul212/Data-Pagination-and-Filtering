@@ -34,7 +34,7 @@ function showPage(list, page) {
             </li>                     
          `;
 
-         // position='beforeend': Insert student's list item  inside the element, after its last child
+      // position='beforeend': Insert student's list item  inside the element, after its last child
       studentList.insertAdjacentHTML("beforeend", studentItem);
       }
    }
@@ -51,13 +51,16 @@ function addPagination(list){
    for (let i = 1; i <= numOfPages ; i++){
       let button = `
             <li>
-               <button type="button"> ${i} </button>
+               <button type="button">${i}</button>
             </li>
       `;
 
       linkList.insertAdjacentHTML("beforeend", button);
    }
+   // add the 'active' class to the first button
+   document.querySelector(".link-list button").className = "active";
 
+   // Create an eventListener on linkList that will be called whrn there is a click event
 
 
 

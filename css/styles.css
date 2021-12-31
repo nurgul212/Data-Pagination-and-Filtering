@@ -103,6 +103,12 @@ header h2 {
   border-radius: 2px;
   -webkit-transition: box-shadow .3s ease;
   transition: box-shadow .3s ease;
+  transition: all 0.5s;
+}
+.student-item:hover {
+  background-color: rgb(205, 203, 228);
+  border: 2px solid rgb(30, 144, 255);
+  transform: scale(1.1) ;
 }
 
 .avatar {
@@ -147,6 +153,9 @@ header h2 {
   padding-top: 1.1em;
   border-top: solid 1px #dcdcdc;
   margin-top: 1.1em;
+}
+.student-item:hover .date {
+  border-top: solid 1px orange;
 }
 
 
