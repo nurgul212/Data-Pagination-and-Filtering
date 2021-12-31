@@ -8,8 +8,16 @@
 
 body {
 	font-family: 'Montserrat', Helvetica, sans-serif;
-	background-color: rgb(229, 238, 250);
+	/* background-color: rgb(195, 207, 149); */
+  /* background: linear-gradient(-35deg,  #729336,  #6a8687, #d9917b,#91ddcb); */
   transition: 0.4s;
+}
+html {
+  min-height: 100vh; 
+  /* max-width: 1400px;  */
+  margin: 0 auto; 
+  /* background: rgba(243, 239, 194, 0.3); */
+  background: linear-gradient(-40deg,  #729336, #edeea7, #f1bdae,#91ddcb, #729336);
 }
 
 ul {
