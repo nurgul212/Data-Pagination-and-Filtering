@@ -4,7 +4,7 @@ FSJS Project 2 - Data Pagination and Filtering
 */
 // Global variables
 const studentList = document.querySelector(".student-list");
-const linkList = document.querySelector(".link-list");
+const pageButtons = document.querySelector(".link-list");
 const itemsPerPage = 9;
 
 
@@ -47,7 +47,7 @@ showPage(data, 1);
 function addPagination(list){
    const numOfPages = Math.ceil(list.length / itemsPerPage);
    // console.log(numOfPages);
-   linkList.innerHTML = '';
+   pageButtons.innerHTML = '';
    for (let i = 1; i <= numOfPages ; i++){
       let button = `
             <li>
@@ -55,14 +55,24 @@ function addPagination(list){
             </li>
       `;
 
-      linkList.insertAdjacentHTML("beforeend", button);
+      pageButtons.insertAdjacentHTML("beforeend", button);
    }
-   // add the 'active' class to the first button
-   document.querySelector(".link-list button").className = "active";
+   const buttons =  pageButtons.getElementsByTagName("button");
+    // add the 'active' class to the first button
+   buttons[0].className = "active";
 
-   // Create an eventListener on linkList that will be called whrn there is a click event
-
-
+   // Create an eventListener on linkList that will be called when there is a click event
+  pageButtons.addEventListener("click", (e) => {
+     const clickedButton = e.target;
+      if (clickedButton.tagName === "BUTTON") {
+            for(let i = 0; i < buttons.length; i++){
+               buttons[i].className = '';
+            }
+            
+            clickedButton.className = 'active';
+            showPage(list, clickedButton.textContent);   
+         }
+  });
 
 }
 // Call function
