@@ -51,8 +51,10 @@ header h2 {
 	margin-bottom: 25px;
 }
 
-
-
+.errorMessage{
+  font-size: 20px;
+  color: #cd0c0c;
+}
 .student-search {
   display: flex;
 }
@@ -106,14 +108,15 @@ header h2 {
   padding: 2.5em;
   background-color: #fff;
   border-radius: 2px;
-  -webkit-transition: box-shadow .3s ease;
-  transition: box-shadow .3s ease;
+  /* -webkit-transition: box-shadow .3s ease;  */
+   transition: box-shadow .3s ease; 
   transition: all 0.5s;
+  
 }
 .student-item:hover {
   background-color: rgb(224, 231, 180);
   border: 2px solid red;
-  transform: scale(1.1) ;
+  transform: scale(1.1) ;  
 }
 
 .avatar {

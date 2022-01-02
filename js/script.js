@@ -79,16 +79,50 @@ function addPagination(list){
 addPagination(data);
 
 
+
 //For Exceeds Expectations Mark, I am going to add search bar and search button as a template literal into HTML
 const searchBar = document.querySelector("header");
 let searchForm = `
                   <label for="search" class="student-search">
                      <span>Search by name</span>
                      <input id="search" placeholder="Search by name...">
-                     <button type="button">
+                     <button type="button" id="button">
                         <img src="img/icn-search.svg" alt="Search icon">
                      </button>
                    </label>
                    `;
-searchBar.insertAdjacentHTML("beforeend", searchForm)                   
+searchBar.insertAdjacentHTML("beforeend", searchForm);
+
+//searchFilter function is used to find a student by first or last name
+const search = document.getElementById("search"); 
+const errorMessage = document.createElement('p'); 
+errorMessage.className = 'errorMessage';
+searchBar.parentNode.appendChild(errorMessage);
+
+
+// searchFilter(data);
+function searchFilter(inputName, studentsList){
+   let filteredName = [];
+   errorMessage.textContent = '';
+   for(let i = 0 ; i < studentsList.length; i++){
+      if(studentsList[i].name.first.toLowerCase().includes(inputName.toLowerCase()) || 
+      studentsList[i].name.last.toLowerCase().includes(inputName.toLowerCase()) ){
+         filteredName.push(studentsList[i]);
+         errorMessage.style.display="none";
+      } else if (filteredName.length == 0) { 
+         errorMessage.textContent = '" ' + inputName +' " '+ ' is not found, please try again.';
+         errorMessage.style.display="block";
+      }
+   }
+   showPage(filteredName,1);
+   addPagination(filteredName);
+}
+
+let searchName= "";
+const inputSearch = document.querySelector("#search");
+inputSearch.addEventListener("keyup", (e) => {
+   //set the current searchStr to the current input value
+   searchName = e.target.value;
+   searchFilter(searchName, data);
+ });
 
