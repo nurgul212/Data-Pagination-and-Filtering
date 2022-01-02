@@ -77,3 +77,18 @@ function addPagination(list){
 }
 // Call function
 addPagination(data);
+
+
+//For Exceeds Expectations Mark, I am going to add search bar and search button as a template literal into HTML
+const searchBar = document.querySelector("header");
+let searchForm = `
+                  <label for="search" class="student-search">
+                     <span>Search by name</span>
+                     <input id="search" placeholder="Search by name...">
+                     <button type="button">
+                        <img src="img/icn-search.svg" alt="Search icon">
+                     </button>
+                   </label>
+                   `;
+searchBar.insertAdjacentHTML("beforeend", searchForm)                   
+
