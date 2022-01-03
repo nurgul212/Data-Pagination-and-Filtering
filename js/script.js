@@ -50,16 +50,17 @@ function addPagination(list){
    for (let i = 1; i <= numOfPages ; i++){
       let button = `
             <li>
-               <button type="button">${i}</button>
+               <button type="button" class="btn">${i}</button>
             </li>
+      
       `;
 
       pageButtons.insertAdjacentHTML("beforeend", button);
    }
-   const buttons =  pageButtons.getElementsByTagName("button");
+   const buttons = pageButtons.querySelectorAll(".btn");
   
     // add the 'active' class to the first button
-   buttons[0].className='active';
+   buttons[0].classList.add('active');
 
    // Create an addEventListener on linkList that will be called when there is a click event
   pageButtons.addEventListener("click", (e) => {
