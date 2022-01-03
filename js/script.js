@@ -7,8 +7,6 @@ const studentList = document.querySelector(".student-list");
 const pageButtons = document.querySelector(".link-list");
 const itemsPerPage = 9;
 
-
-
 // showPage function creates and insert the elements needed to display a page of nine students
 function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
@@ -43,7 +41,8 @@ function showPage(list, page) {
 showPage(data, 1);
 
 
-// addPagination function creates and insert the pagination buttons
+// addPagination function creates and insert all pagination buttons and 
+// adds functionality to the page to show all of the students
 function addPagination(list){
    const numOfPages = Math.ceil(list.length / itemsPerPage);
    // console.log(numOfPages);
@@ -58,10 +57,11 @@ function addPagination(list){
       pageButtons.insertAdjacentHTML("beforeend", button);
    }
    const buttons =  pageButtons.getElementsByTagName("button");
+  
     // add the 'active' class to the first button
-   buttons[0].className = "active";
+   buttons[0].className='active';
 
-   // Create an eventListener on linkList that will be called when there is a click event
+   // Create an addEventListener on linkList that will be called when there is a click event
   pageButtons.addEventListener("click", (e) => {
      const clickedButton = e.target;
       if (clickedButton.tagName === "BUTTON") {
@@ -93,14 +93,13 @@ let searchForm = `
                    `;
 searchBar.insertAdjacentHTML("beforeend", searchForm);
 
-//searchFilter function is used to find a student by first or last name
+
 const search = document.getElementById("search"); 
 const errorMessage = document.createElement('p'); 
 errorMessage.className = 'errorMessage';
 searchBar.parentNode.appendChild(errorMessage);
 
-
-// searchFilter(data);
+//searchFilter function is used to find a student by first or last name, errorMessage will be returned if there are no matches
 function searchFilter(inputName, studentsList){
    let filteredName = [];
    errorMessage.textContent = '';
@@ -121,8 +120,6 @@ function searchFilter(inputName, studentsList){
 let searchName= "";
 const inputSearch = document.querySelector("#search");
 inputSearch.addEventListener("keyup", (e) => {
-   //set the current searchStr to the current input value
    searchName = e.target.value;
    searchFilter(searchName, data);
  });
-
