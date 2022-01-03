@@ -47,33 +47,37 @@ function addPagination(list){
    const numOfPages = Math.ceil(list.length / itemsPerPage);
    // console.log(numOfPages);
    pageButtons.innerHTML = '';
-   for (let i = 1; i <= numOfPages ; i++){
-      let button = `
-            <li>
-               <button type="button" class="btn">${i}</button>
-            </li>
-      
-      `;
+   if(numOfPages ==0){
+      return;
+   } else {
+            for (let i = 1; i <= numOfPages ; i++){
+               let button = `
+                     <li>
+                        <button type="button" class="btn">${i}</button>
+                     </li>
+               
+               `;
 
-      pageButtons.insertAdjacentHTML("beforeend", button);
-   }
-   const buttons = pageButtons.querySelectorAll(".btn");
-  
-    // add the 'active' class to the first button
-   buttons[0].classList.add('active');
-
-   // Create an addEventListener on linkList that will be called when there is a click event
-  pageButtons.addEventListener("click", (e) => {
-     const clickedButton = e.target;
-      if (clickedButton.tagName === "BUTTON") {
-            for(let i = 0; i < buttons.length; i++){
-               buttons[i].className = '';
+               pageButtons.insertAdjacentHTML("beforeend", button);
             }
-            
-            clickedButton.className = 'active';
-            showPage(list, clickedButton.textContent);   
-         }
-  });
+            const buttons = pageButtons.querySelectorAll(".btn");
+         
+            // add the 'active' class to the first button
+            buttons[0].classList.add('active');
+
+            // Create an addEventListener on linkList that will be called when there is a click event
+         pageButtons.addEventListener("click", (e) => {
+            const clickedButton = e.target;
+               if (clickedButton.tagName === "BUTTON") {
+                     for(let i = 0; i < buttons.length; i++){
+                        buttons[i].className = '';
+                     }
+                     
+                     clickedButton.className = 'active';
+                     showPage(list, clickedButton.textContent);   
+                  }
+         });
+      }
 
 }
 // Call function
